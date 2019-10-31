@@ -1,0 +1,75 @@
+// Länkar in font från google-api
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap')
+
+// Variabler
+$header-color: rgb(255, 0, 170)
+$font-color: rgba(0, 204, 255)
+
+// Mixin
+=transform($property)
+  -webkit-transform: $property
+  -ms-transform: $property
+  transform: $property
+  // Övergången ska ta 0.2 sekunder
+  transition: transform .2s
+
+
+// Extend
+%header-style
+    color: $header-color
+    text-transform: uppercase
+    text-align: center
+    font-family: 'Roboto Mono', monospace
+
+p
+    color: $font-color
+    text-align: justify
+    font-size: 12pt
+    font-family: 'Roboto Mono', monospace
+
+header
+
+main
+    max-width: 1080px
+    margin: 0 auto
+    background-color: #1f0047ce
+    padding: 5em
+    border-radius: 200px
+
+.welcome
+    margin-top: -3em 
+    // Nesting 
+    h1
+        @extend %header-style 
+    h5  
+        @extend %header-style
+
+
+.news-wrapper
+    margin-top: 2.4em
+
+.news-list li:hover
+    +transform(scale(1.12,1.12))
+    color: $header-color
+
+.news-list h3
+    @extend %header-style
+
+
+.top-hits-wrapper
+    margin-top: 2em  
+
+.hits-header
+    @extend %header-style
+
+
+.song-cover
+    width: 90%
+    margin: 1em
+    border-radius: 500px
+    border: solid 2pt lighten($header-color, 100%)
+    &:hover
+        // Vid hover triggas mixin-effekt och skalar upp med 10%
+        +transform(scale(1.1))
+        // Med färgfunktionen "darken" görs färgen mörkare
+        border: solid 2pt lighten($header-color, 0%)
