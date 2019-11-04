@@ -29,7 +29,7 @@ function watchTask() { // Funktionen 'watchTask' spårar alla ändringar och hå
         files.cssPath,
         files.mediaPath,
         files.sassPath
-    ], parallel(copyHTML, copyMedia, jsTask, cssCombine, sassConvert));
+    ], parallel(copyHTML, copyMedia, jsTask, sassConvert, cssCombine));
 }
 
 function copyHTML() { // Task: kopiera HTML
@@ -70,7 +70,7 @@ function sassConvert() { // Task: Konvertera sass/scss till css
 
 //______________________________________ |GULP-Aktivering| ______________________________________
 exports.default = series( // Huvudkommandot 'Gulp' sätter igång samtliga funktioner
-    parallel(copyHTML, copyMedia, jsTask, cssCombine, sassConvert), watchTask);
+    parallel(copyHTML, copyMedia, jsTask, /*cssCombine,*/ sassConvert), watchTask);
 
 
 
